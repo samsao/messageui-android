@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--font-->
+    <dimen name="font_size_small">12sp</dimen>
+    <dimen name="font_size_medium">14sp</dimen>
+    <dimen name="font_size_medium_large">16sp</dimen>
+    <dimen name="font_size_large">18sp</dimen>
+    <dimen name="font_size_very_large">24sp</dimen>
+    <dimen name="font_size_extra_large">32sp</dimen>
+
+    <!--elements-->
+    <dimen name="quarter_spacing">2dp</dimen>
+    <dimen name="half_spacing">4dp</dimen>
+    <dimen name="spacing">8dp</dimen>
+    <dimen name="double_spacing">16dp</dimen>
+    <dimen name="triple_spacing">24dp</dimen>
+    <dimen name="quadruple_spacing">32dp</dimen>
+</resources>

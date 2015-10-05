@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MessageUI">
+        <attr name="thisBalloonBackground" format="reference"/>
+        <attr name="thatBalloonBackground" format="reference"/>
+        <attr name="thisBalloonTextColor" format="color"/>
+        <attr name="thatBalloonTextColor" format="color"/>
+        <attr name="balloonTextSize" format="dimension"/>
+        <attr name="balloonPadding" format="dimension"/>
+        <attr name="balloonMargins" format="dimension"/>
+        <attr name="progressBarColor" format="color"/>
+    </declare-styleable>
+</resources>

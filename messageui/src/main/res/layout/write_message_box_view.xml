@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:background="@android:color/white"
+              android:padding="@dimen/spacing"
+              android:layout_height="200dp">
+
+    <EditText
+        android:id="@+id/message_box_text_field"
+        android:layout_width="0dp"
+        android:layout_weight="8"
+        android:layout_marginRight="@dimen/spacing"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/message_box_button"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:text="Send"
+        android:textSize="@dimen/font_size_medium_large"
+        android:background="@null"/>
+
+</LinearLayout>
