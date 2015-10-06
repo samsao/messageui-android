@@ -7,6 +7,7 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.ColorInt;
+import android.support.annotation.DrawableRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -110,6 +111,8 @@ public class MessagesWindow extends RelativeLayout {
                         sendMessage(mTypeTextField.getText().toString().trim());
                         mTypeTextField.setText("");
                     }
+                    mMessageAdapter.notifyDataSetChanged();
+                    mRecyclerView.invalidate();
                 }
             });
         }
@@ -159,13 +162,14 @@ public class MessagesWindow extends RelativeLayout {
         });
     }
 
+
     public void setupAttrs(Context context, AttributeSet attrs) {
         if (attrs != null) {
             TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.MessageUI, 0, 0);
             try {
                 int thisBalloonBackgroundResource = a.getResourceId(R.styleable.MessageUI_thisBalloonBackground, 0);
                 if (thisBalloonBackgroundResource != 0) {
-                    setThisBalloonBackground(ContextCompat.getDrawable(context, thisBalloonBackgroundResource));
+                    setThisBalloonBackgroundResource(thisBalloonBackgroundResource);
                 }
 
                 int thisBalloonTextColor = a.getColor(R.styleable.MessageUI_thisBalloonTextColor, 0);
@@ -175,7 +179,7 @@ public class MessagesWindow extends RelativeLayout {
 
                 int thatBalloonBackgroundResource = a.getResourceId(R.styleable.MessageUI_thatBalloonBackground, 0);
                 if (thatBalloonBackgroundResource != 0) {
-                    setThatBalloonBackground(ContextCompat.getDrawable(context, thatBalloonBackgroundResource));
+                    setThatBalloonBackgroundResource(thatBalloonBackgroundResource);
                 }
 
                 int thatBalloonTextColor = a.getColor(R.styleable.MessageUI_thatBalloonTextColor, 0);
@@ -203,7 +207,7 @@ public class MessagesWindow extends RelativeLayout {
                     setProgressBarColor(progressBarColor);
                 }
 
-                int[] attrsArray = new int[] {android.R.attr.background};
+                int[] attrsArray = new int[]{android.R.attr.background};
                 TypedArray ta = context.obtainStyledAttributes(attrs, attrsArray);
                 int color = ta.getResourceId(0, 0);
                 if (color != 0) {
@@ -217,8 +221,8 @@ public class MessagesWindow extends RelativeLayout {
     }
 
     private void setupDefaultCustomization(Context context) {
-        setThatBalloonBackground(ContextCompat.getDrawable(context, R.drawable.balloon_background));
-        setThisBalloonBackground(ContextCompat.getDrawable(context, R.drawable.balloon_background));
+        setThatBalloonBackgroundResource(R.drawable.balloon_background);
+        setThisBalloonBackgroundResource(R.drawable.balloon_background);
         setThatBalloonTextColor(ContextCompat.getColor(getContext(), android.R.color.black));
         setThisBalloonTextColor(ContextCompat.getColor(getContext(), android.R.color.black));
         setBalloonTextSize(context.getResources().getDimension(R.dimen.font_size_medium_large));
@@ -339,6 +343,7 @@ public class MessagesWindow extends RelativeLayout {
 
     /**
      * displays a timestamp with the current time
+     *
      * @param side of the chat view
      */
     public void showTimeStamp(int side) {
@@ -371,6 +376,7 @@ public class MessagesWindow extends RelativeLayout {
      * ALWAYS_AFTER_BALLOON
      * INSIDE_BALLOON_TOP
      * INSIDE_BALLOON_BOTTOM
+     *
      * @param mode
      */
     public void setTimeStampMode(int mode) {
@@ -385,14 +391,16 @@ public class MessagesWindow extends RelativeLayout {
 
     /**
      * the background of your balloon
+     *
      * @param balloonBackground
      */
-    public void setThisBalloonBackground(Drawable balloonBackground) {
+    public void setThisBalloonBackgroundResource(@DrawableRes int balloonBackground) {
         mMessageAdapter.setThisBalloonBackground(balloonBackground);
     }
 
     /**
      * the textColor of your balloon
+     *
      * @param balloonTextColor
      */
     public void setThisBalloonTextColor(@ColorInt int balloonTextColor) {
@@ -401,14 +409,16 @@ public class MessagesWindow extends RelativeLayout {
 
     /**
      * the background of the other person's balloon
+     *
      * @param balloonBackground
      */
-    public void setThatBalloonBackground(Drawable balloonBackground) {
+    public void setThatBalloonBackgroundResource(@DrawableRes int balloonBackground) {
         mMessageAdapter.setThatBalloonBackground(balloonBackground);
     }
 
     /**
      * the textColor of the other person's balloon
+     *
      * @param balloonTextColor
      */
     public void setThatBalloonTextColor(@ColorInt int balloonTextColor) {
@@ -421,6 +431,7 @@ public class MessagesWindow extends RelativeLayout {
 
     /**
      * sets the padding inside the balloon around the text
+     *
      * @param left
      * @param top
      * @param right
@@ -432,6 +443,7 @@ public class MessagesWindow extends RelativeLayout {
 
     /**
      * sets the margins around each balloon
+     *
      * @param left
      * @param top
      * @param right
@@ -443,6 +455,7 @@ public class MessagesWindow extends RelativeLayout {
 
     /**
      * the color of the progress bar showed on top when the user requests older messages
+     *
      * @param progressBarColor
      */
     public void setProgressBarColor(int progressBarColor) {
@@ -451,6 +464,7 @@ public class MessagesWindow extends RelativeLayout {
 
     /**
      * the padding around the progress bar showed on top when the user requests older messages
+     *
      * @param left
      * @param top
      * @param right
@@ -482,6 +496,7 @@ public class MessagesWindow extends RelativeLayout {
      * TIMESTAMP_INSIDE_BALLOON_GRAVITY_RIGHT
      * TIMESTAMP_INSIDE_BALLOON_GRAVITY_CENTER
      * TIMESTAMP_INSIDE_BALLOON_GRAVITY_CORNER
+     *
      * @param timeStampGravity
      */
     public void setTimeStampInsideBalloonGravity(int timeStampGravity) {
@@ -492,6 +507,7 @@ public class MessagesWindow extends RelativeLayout {
      * sets the position of the timestamp on the chat view if the timestamp mode is not INSIDE_BALLOON_TOP or INSIDE_BALLOON_BOTTOM
      * TIMESTAMP_OUTSIDE_GRAVITY_CORNER
      * TIMESTAMP_OUTSIDE_GRAVITY_MIDDLE
+     *
      * @param position
      */
     public void setTimeStampPosition(int position) {
@@ -500,6 +516,7 @@ public class MessagesWindow extends RelativeLayout {
 
     /**
      * sets a margin on the opposite side of balloon, to distinguish the balloon's side
+     *
      * @param margin
      */
     public void setBalloonLateralMargin(int margin) {
@@ -508,6 +525,7 @@ public class MessagesWindow extends RelativeLayout {
 
     /**
      * its the view with the text field and send button. By setting your custom view, you'll have to handle the sending messages.
+     *
      * @param view
      */
     public void setWritingMessageView(View view) {
@@ -519,5 +537,6 @@ public class MessagesWindow extends RelativeLayout {
     public View getWritingMessageView() {
         return mWriteMessageBox;
     }
+
 
 }

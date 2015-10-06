@@ -2,6 +2,7 @@ package com.samsao.messageui.adapters;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.DrawableRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
@@ -32,9 +33,9 @@ public class MessageListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private boolean mHasMoreToLoad;
 
     //Features for customization
-    private Drawable mThisBalloonBackground;
+    private int mThisBalloonBackground;
     private int mThisBalloonTextColor;
-    private Drawable mThatBalloonBackground;
+    private int mThatBalloonBackground;
     private int mThatBalloonTextColor;
     private float mBalloonTextSize;
     private int[] mBalloonPadding;
@@ -153,7 +154,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         mBalloonMargin = new int[]{left, top, right, bottom};
     }
 
-    public void setThisBalloonBackground(Drawable thisBalloonBackground) {
+    public void setThisBalloonBackground(@DrawableRes int thisBalloonBackground) {
         mThisBalloonBackground = thisBalloonBackground;
     }
 
@@ -161,7 +162,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         mThisBalloonTextColor = thisBalloonTextColor;
     }
 
-    public void setThatBalloonBackground(Drawable thatBalloonBackground) {
+    public void setThatBalloonBackground(@DrawableRes int thatBalloonBackground) {
         mThatBalloonBackground = thatBalloonBackground;
     }
 

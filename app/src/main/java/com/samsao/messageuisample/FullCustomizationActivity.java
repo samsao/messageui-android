@@ -11,6 +11,9 @@ import com.samsao.messageui.views.MessagesWindow;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Not ready yet!
+ */
 public class FullCustomizationActivity extends AppCompatActivity {
 
     private MessagesWindow mMessagesWindow;

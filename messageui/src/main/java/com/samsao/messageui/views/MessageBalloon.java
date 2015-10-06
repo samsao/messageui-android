@@ -2,9 +2,9 @@ package com.samsao.messageui.views;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.ColorInt;
+import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -61,6 +61,7 @@ public class MessageBalloon extends FrameLayout {
     private void init(Context context) {
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
+
         mBalloonFrame = new LinearLayout(context);
         mBalloonFrame.setOrientation(LinearLayout.VERTICAL);
         addView(mBalloonFrame);
@@ -90,7 +91,6 @@ public class MessageBalloon extends FrameLayout {
 
             mMessageTextView.setText(mMessage.getText());
             mBalloonFrame.setLayoutParams(params);
-
         }
     }
 
@@ -123,8 +123,8 @@ public class MessageBalloon extends FrameLayout {
         }
     }
 
-    public void setBalloonBackground(Drawable balloonBackground) {
-        mBalloonFrame.setBackground(balloonBackground);
+    public void setBalloonBackground(@DrawableRes int balloonBackground) {
+        mBalloonFrame.setBackgroundResource(balloonBackground);
     }
 
     public void setTimeStampMode(int timeStampMode) {

@@ -1,6 +1,5 @@
 package com.samsao.messageui.adapters.ViewHolders;
 
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
@@ -13,16 +12,16 @@ import com.samsao.messageui.views.TimeStamp;
  */
 public class MessageHolder extends RecyclerView.ViewHolder {
     protected MessageBalloon mBalloon;
-    private Drawable mThisBalloonBackground;
+    private int mThisBalloonBackground;
     private int mThisBalloonTextColor;
-    private Drawable mThatBalloonBackground;
+    private int mThatBalloonBackground;
     private int mThatBalloonTextColor;
     private int mBalloonLateralMargin;
     private TimeStamp mTimeStamp;
 
 
-    public MessageHolder(MessageBalloon balloon, Drawable thisBalloonBackground, int thisBalloonTextColor,
-                         Drawable thatBalloonBackground, int thatBalloonTextColor, float balloonTextSize,
+    public MessageHolder(MessageBalloon balloon, int thisBalloonBackground, int thisBalloonTextColor,
+                         int thatBalloonBackground, int thatBalloonTextColor, float balloonTextSize,
                          int[] balloonPadding, int[] balloonMargin, int timeStampMode, int timeStampGravity, int balloonLateralMargin) {
         super(balloon);
         mBalloon = balloon;
@@ -39,6 +38,12 @@ public class MessageHolder extends RecyclerView.ViewHolder {
     }
 
     public void setup(final Message message) {
+        mBalloon.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
+        mBalloon.setMessage(message);
+        if (mTimeStamp != null) {
+            mTimeStamp.setMessage(message);
+        }
+
         if (message.getSide() == Message.THAT_SIDE) {
             mBalloon.setBalloonBackground(mThatBalloonBackground);
             mBalloon.setBalloonTextColor(mThatBalloonTextColor);
@@ -47,11 +52,6 @@ public class MessageHolder extends RecyclerView.ViewHolder {
             mBalloon.setBalloonTextColor(mThisBalloonTextColor);
         }
 
-        mBalloon.setMessage(message);
-        if (mTimeStamp != null) {
-            mTimeStamp.setMessage(message);
-        }
-        mBalloon.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
     }
 
     public void setTimeStamp(TimeStamp timeStamp) {
