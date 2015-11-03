@@ -4,14 +4,14 @@ A library to create the UI for chatting apps for Android.
 ![Message](/assets/MessageSample.png)
 
 ## Supported Android versions
-4.1.x and higher
+3.0.x and higher
 
 ## Adding to your project
 
 Add the dependency to your build.gradle:
 
 	dependencies {
-		compile 'com.github.samsao:messageui_android:0.0.1'
+		compile 'com.github.samsao:messageui_android:1.0.0'
 	}
 
 ## Usage

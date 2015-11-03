@@ -106,7 +106,12 @@ public class Timestamp extends FrameLayout {
 
     @Override
     public void setBackground(Drawable timestampBackground) {
-        mTextView.setBackground(timestampBackground);
+        int sdk = android.os.Build.VERSION.SDK_INT;
+        if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            setBackgroundDrawable(timestampBackground);
+        } else {
+            setBackground(timestampBackground);
+        }
     }
 
     public void setPosition(int timestampPosition) {
