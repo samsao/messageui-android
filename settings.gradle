@@ -1,1 +1,1 @@
-include ':app', ':messageui'
+include ':sample', ':library'

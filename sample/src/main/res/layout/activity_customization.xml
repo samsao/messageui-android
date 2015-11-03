@@ -1,0 +1,17 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <com.samsao.messageui.views.MessagesWindow
+        android:id="@+id/customized_messages_window"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:balloonMargins="20dp"
+        app:progressBarColor="@android:color/tertiary_text_light"
+        app:thatBalloonBackground="@drawable/other_balloon_shape"
+        app:thatBalloonTextColor="@android:color/white"
+        app:thisBalloonBackground="@drawable/my_balloon_shape"
+        app:thisBalloonTextColor="@android:color/white"/>
+
+</FrameLayout>
