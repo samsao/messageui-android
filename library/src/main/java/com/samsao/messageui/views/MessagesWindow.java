@@ -248,7 +248,12 @@ public class MessagesWindow extends RelativeLayout {
 
         setTimestampTextSize((int) context.getResources().getDimension(R.dimen.font_size_medium));
 
-        setBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.holo_blue_dark));
+        int sdk = android.os.Build.VERSION.SDK_INT;
+        if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            setBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.darker_gray));
+        } else {
+            setBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.holo_blue_dark));
+        }
     }
 
     private boolean isScrollable() {
