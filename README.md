@@ -11,7 +11,7 @@ A library to create the UI for chatting apps for Android.
 Add the dependency to your build.gradle:
 
 	dependencies {
-		compile 'com.github.samsao:messageui_android:1.0.0'
+		compile 'com.github.samsao:messageui:1.0.0'
 	}
 
 ## Usage
